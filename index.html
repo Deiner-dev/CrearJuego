@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="theme-color" content="#0D0D1A" />
+  <title>GameVault — Agregar Juego</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="app-header">
+    <a class="brand" href="#">
+      <span class="brand-icon">🎮</span>
+      <span class="brand-name">GameVault</span>
+    </a>
+    <nav class="header-nav">
+      <a href="index.html" class="nav-btn">Catálogo</a>
+      <a href="#" class="nav-btn nav-btn--active">+ Agregar</a>
+    </nav>
+  </header>
+
+  <main class="app-main">
+    <div class="page-layout">
+
+      <!-- ===== COLUMNA FORMULARIO ===== -->
+      <div class="form-container">
+        <div class="form-header">
+          <h1>Agregar <span>nuevo juego</span></h1>
+          <p>Completa los datos para registrar el juego en el catálogo.</p>
+        </div>
+
+        <div class="form-card">
+          <form id="juegoForm" novalidate>
+
+            <p class="form-section-title">Información básica</p>
+            <div class="form-grid">
+
+              <div class="form-group form-group--full">
+                <label for="nombreJuego">Nombre del juego *</label>
+                <input type="text" id="nombreJuego" name="nombreJuego" placeholder="Ej: The Legend of Zelda" required />
+              </div>
+
+              <div class="form-group">
+                <label for="genero">Género *</label>
+                <select id="genero" name="genero" required>
+                  <option value="" disabled selected>Selecciona…</option>
+                  <option value="Acción">Acción</option>
+                  <option value="Aventura">Aventura</option>
+                  <option value="RPG">RPG</option>
+                  <option value="Deportes">Deportes</option>
+                  <option value="Estrategia">Estrategia</option>
+                  <option value="Terror">Terror</option>
+                  <option value="Simulación">Simulación</option>
+                  <option value="Plataformas">Plataformas</option>
+                  <option value="Puzzle">Puzzle</option>
+                  <option value="Otro">Otro</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="anioLanzamiento">Año de lanzamiento *</label>
+                <input type="number" id="anioLanzamiento" name="anioLanzamiento" placeholder="Ej: 2023" min="1970" max="2030" required />
+              </div>
+
+              <div class="form-group">
+                <label for="plataforma">Plataforma *</label>
+                <select id="plataforma" name="plataforma" required>
+                  <option value="" disabled selected>Selecciona…</option>
+                  <option value="PC">PC</option>
+                  <option value="PS5">PS5</option>
+                  <option value="PS4">PS4</option>
+                  <option value="Xbox Series X">Xbox Series X</option>
+                  <option value="Xbox One">Xbox One</option>
+                  <option value="Nintendo Switch">Nintendo Switch</option>
+                  <option value="Multiplataforma">Multiplataforma</option>
+                  <option value="Mobile">Mobile</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="desarrolladora">Desarrolladora *</label>
+                <input type="text" id="desarrolladora" name="desarrolladora" placeholder="Ej: Nintendo, Ubisoft…" required />
+              </div>
+
+            </div>
+
+            <p class="form-section-title">Descripción</p>
+            <div class="form-grid">
+              <div class="form-group form-group--full">
+                <label for="descripcion">Descripción del juego</label>
+                <textarea id="descripcion" name="descripcion" placeholder="Escribe una breve descripción del juego…"></textarea>
+              </div>
+            </div>
+
+            <p class="form-section-title">Calificación y estado</p>
+            <div class="form-grid">
+
+              <div class="form-group">
+                <label>Calificación</label>
+                <div class="rating-group">
+                  <div class="rating-stars" id="starsContainer">
+                    <button type="button" class="star-btn" data-value="1">★</button>
+                    <button type="button" class="star-btn" data-value="2">★</button>
+                    <button type="button" class="star-btn" data-value="3">★</button>
+                    <button type="button" class="star-btn" data-value="4">★</button>
+                    <button type="button" class="star-btn" data-value="5">★</button>
+                    <span class="rating-value" id="ratingLabel">Sin calificar</span>
+                  </div>
+                  <input type="hidden" id="calificaciones" name="calificaciones" value="0" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Estado</label>
+                <div class="toggle-group">
+                  <div class="toggle-label">
+                    Disponible
+                    <span class="toggle-sub">¿El juego está activo en catálogo?</span>
+                  </div>
+                  <label class="toggle">
+                    <input type="checkbox" id="activo" name="activo" checked />
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+
+            </div>
+
+            <p class="form-section-title">Imagen</p>
+            <div class="form-grid">
+              <div class="form-group form-group--full">
+                <label for="imagen">URL de la imagen</label>
+                <input type="text" id="imagen" name="imagen" placeholder="https://i.imgur.com/ejemplo.jpg" />
+                <div class="img-preview-wrap" id="imgPreviewWrap">
+                  <img id="imgPreview" src="" alt="Vista previa" />
+                  <span class="img-placeholder" id="imgPlaceholder">La imagen aparecerá aquí</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-submit">🎮 Guardar juego</button>
+              <button type="button" class="btn-reset-form" id="btnResetForm">Limpiar</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+      <!-- ===== COLUMNA ALQUILADOS ===== -->
+      <div class="alquilados-container">
+        <div class="alq-header">
+          <div>
+            <h2 class="alq-title">Juegos <span>alquilados</span></h2>
+            <p class="alq-subtitle">Juegos actualmente fuera del catálogo</p>
+          </div>
+          <button class="btn-refrescar" id="btnRefrescar" title="Actualizar">↻</button>
+        </div>
+
+        <div class="alq-loading" id="alquiladosLoading">
+          <div class="spinner"></div>
+          <p>Cargando juegos…</p>
+        </div>
+
+        <div class="alq-empty" id="alquiladosEmpty" hidden>
+          <span>🎮</span>
+          <p>No hay juegos alquilados actualmente</p>
+        </div>
+
+        <div class="alq-grid" id="alquiladosGrid"></div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <p>© 2025 <strong>GameVault</strong> · Todos los derechos reservados</p>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
